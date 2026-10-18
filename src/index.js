@@ -24,7 +24,10 @@ export default {
       try {
         const response = await fetch(endpoint.toString(), {
           method: "GET",
-          headers: { "x-api-key": env.PRICESAPI_KEY, "Accept": "application/json" },
+          headers: {
+  "Authorization": `Bearer ${env.PRICESAPI_KEY}`,
+  "Accept": "application/json"
+},
           signal: AbortSignal.timeout(95000)
         });
         const raw = await response.text();
